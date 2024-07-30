@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-// Gearbox Protocol. Generalized leverage for DeFi protocols
-// (c) Gearbox Foundation, 2023.
+
 pragma solidity ^0.8.17;
 
 import {AP_TREASURY} from "@gearbox-protocol/core-v3/contracts/interfaces/IAddressProviderV3.sol";

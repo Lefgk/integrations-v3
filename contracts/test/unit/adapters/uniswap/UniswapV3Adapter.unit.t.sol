@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-// Gearbox Protocol. Generalized leverage for DeFi protocols
-// (c) Gearbox Foundation, 2023.
+
 pragma solidity ^0.8.17;
 
 import {ISwapRouter} from "../../../../integrations/uniswap/IUniswapV3.sol";
@@ -120,7 +119,7 @@ contract UniswapV3AdapterUnitTest is
                         sqrtPriceLimitX96: 0
                     })
                 )
-                ),
+            ),
             requiresApproval: true,
             validatesTokens: true
         });
@@ -203,7 +202,7 @@ contract UniswapV3AdapterUnitTest is
                         recipient: creditAccount
                     })
                 )
-                ),
+            ),
             requiresApproval: true,
             validatesTokens: true
         });

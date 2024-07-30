@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-// Gearbox Protocol. Generalized leverage for DeFi protocols
-// (c) Gearbox Foundation, 2023.
+
 pragma solidity ^0.8.17;
 
 import {IVelodromeV2Router, Route} from "../../../../integrations/velodrome/IVelodromeV2Router.sol";
@@ -92,7 +91,7 @@ contract VelodtomeV2AdapterUnitTest is
             callData: abi.encodeCall(
                 IVelodromeV2Router.swapExactTokensForTokens,
                 (diffInputAmount, diffInputAmount / 2, routes, creditAccount, 789)
-                ),
+            ),
             requiresApproval: true,
             validatesTokens: true
         });
