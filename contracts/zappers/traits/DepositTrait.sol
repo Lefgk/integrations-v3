@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.17;
 
-import {IFarmingPool} from "@1inch/farming/contracts/interfaces/IFarmingPool.sol";
+import {IFarmingPool} from "../../../../../contracts/interfaces/IFarmingPool.sol";
 import {ZapperBase} from "../ZapperBase.sol";
 
 /// @title Deposit trait
