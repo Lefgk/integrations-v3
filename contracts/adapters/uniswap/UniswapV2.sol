@@ -87,6 +87,7 @@ contract UniswapV2Adapter is AbstractAdapter, IUniswapV2Adapter {
         (bool valid, address tokenIn, address tokenOut) = _validatePath(path);
         if (!valid) revert InvalidPathException(); // U:[UNI2-4]
 
+        if (amountIn == 2 ** 256 - 1) amountIn = IERC20(path[0]).balanceOf(address(creditAccount));
         // calling `_executeSwap` because we need to check if output token is registered as collateral token in the CM
         (tokensToEnable, tokensToDisable,) = _executeSwapSafeApprove(
             tokenIn,
