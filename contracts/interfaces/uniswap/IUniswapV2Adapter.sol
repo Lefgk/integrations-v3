@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.17;
 
-import {IAdapter} from "@gearbox-protocol/core-v2/contracts/interfaces/IAdapter.sol";
+import { IAdapter } from "../IAdapter.sol";
 
 struct UniswapV2PairStatus {
     address token0;
@@ -12,7 +12,11 @@ struct UniswapV2PairStatus {
 
 interface IUniswapV2AdapterEvents {
     /// @notice Emited when new status is set for a pair
-    event SetPairStatus(address indexed token0, address indexed token1, bool allowed);
+    event SetPairStatus(
+        address indexed token0,
+        address indexed token1,
+        bool allowed
+    );
 }
 
 interface IUniswapV2AdapterExceptions {
@@ -21,7 +25,11 @@ interface IUniswapV2AdapterExceptions {
 }
 
 /// @title Uniswap V2 Router adapter interface
-interface IUniswapV2Adapter is IAdapter, IUniswapV2AdapterEvents, IUniswapV2AdapterExceptions {
+interface IUniswapV2Adapter is
+    IAdapter,
+    IUniswapV2AdapterEvents,
+    IUniswapV2AdapterExceptions
+{
     function swapTokensForExactTokens(
         uint256 amountOut,
         uint256 amountInMax,
@@ -49,7 +57,10 @@ interface IUniswapV2Adapter is IAdapter, IUniswapV2AdapterEvents, IUniswapV2Adap
     // CONFIGURATION //
     // ------------- //
 
-    function isPairAllowed(address token0, address token1) external view returns (bool);
+    function isPairAllowed(
+        address token0,
+        address token1
+    ) external view returns (bool);
 
     function setPairStatusBatch(UniswapV2PairStatus[] calldata pairs) external;
 }

@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.17;
 
-import {IAdapter} from "@gearbox-protocol/core-v2/contracts/interfaces/IAdapter.sol";
+import { IAdapter } from "../IAdapter.sol";
 
-import {ISwapRouter} from "../../integrations/uniswap/IUniswapV3.sol";
+import { ISwapRouter } from "../../integrations/uniswap/IUniswapV3.sol";
 
 struct UniswapV3PoolStatus {
     address token0;
@@ -47,7 +47,12 @@ interface IUniswapV3AdapterTypes {
 
 interface IUniswapV3AdapterEvents {
     /// @notice Emitted when new status is set for a pool
-    event SetPoolStatus(address indexed token0, address indexed token1, uint24 indexed fee, bool allowed);
+    event SetPoolStatus(
+        address indexed token0,
+        address indexed token1,
+        uint24 indexed fee,
+        bool allowed
+    );
 }
 
 interface IUniswapV3AdapterExceptions {
@@ -62,35 +67,39 @@ interface IUniswapV3Adapter is
     IUniswapV3AdapterEvents,
     IUniswapV3AdapterExceptions
 {
-    function exactInputSingle(ISwapRouter.ExactInputSingleParams calldata params)
-        external
-        returns (uint256 tokensToEnable, uint256 tokensToDisable);
+    function exactInputSingle(
+        ISwapRouter.ExactInputSingleParams calldata params
+    ) external returns (uint256 tokensToEnable, uint256 tokensToDisable);
 
-    function exactDiffInputSingle(ExactDiffInputSingleParams calldata params)
-        external
-        returns (uint256 tokensToEnable, uint256 tokensToDisable);
+    function exactDiffInputSingle(
+        ExactDiffInputSingleParams calldata params
+    ) external returns (uint256 tokensToEnable, uint256 tokensToDisable);
 
-    function exactInput(ISwapRouter.ExactInputParams calldata params)
-        external
-        returns (uint256 tokensToEnable, uint256 tokensToDisable);
+    function exactInput(
+        ISwapRouter.ExactInputParams calldata params
+    ) external returns (uint256 tokensToEnable, uint256 tokensToDisable);
 
-    function exactDiffInput(ExactDiffInputParams calldata params)
-        external
-        returns (uint256 tokensToEnable, uint256 tokensToDisable);
+    function exactDiffInput(
+        ExactDiffInputParams calldata params
+    ) external returns (uint256 tokensToEnable, uint256 tokensToDisable);
 
-    function exactOutputSingle(ISwapRouter.ExactOutputSingleParams calldata params)
-        external
-        returns (uint256 tokensToEnable, uint256 tokensToDisable);
+    function exactOutputSingle(
+        ISwapRouter.ExactOutputSingleParams calldata params
+    ) external returns (uint256 tokensToEnable, uint256 tokensToDisable);
 
-    function exactOutput(ISwapRouter.ExactOutputParams calldata params)
-        external
-        returns (uint256 tokensToEnable, uint256 tokensToDisable);
+    function exactOutput(
+        ISwapRouter.ExactOutputParams calldata params
+    ) external returns (uint256 tokensToEnable, uint256 tokensToDisable);
 
     // ------------- //
     // CONFIGURATION //
     // ------------- //
 
-    function isPoolAllowed(address token0, address token1, uint24 fee) external view returns (bool);
+    function isPoolAllowed(
+        address token0,
+        address token1,
+        uint24 fee
+    ) external view returns (bool);
 
     function setPoolStatusBatch(UniswapV3PoolStatus[] calldata pools) external;
 }
