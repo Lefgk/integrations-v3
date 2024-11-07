@@ -17,7 +17,7 @@ contract AaveV2_LendingPoolAdapter is
     IAaveV2_LendingPoolAdapter
 {
     AdapterType public constant override _gearboxAdapterType =
-        AdapterType.AAVE_V2_LENDING_POOL;
+        AdapterType.AAVE_V3_LENDING_POOL;
     uint16 public constant override _gearboxAdapterVersion = 3_00;
 
     /// @notice Constructor
